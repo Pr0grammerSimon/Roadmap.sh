@@ -8,9 +8,13 @@ parse.add_argument('username')
 arg = parse.parse_args()
 
 
-response = requests.get(f"https://api.github.com/users/{arg.username}/events",{"per_page":100}).json()
+response = requests.get(f"https://api.github.com/users/{arg.username}/events",{"per_page":100})
 
-for event in response:
+if (not response.ok):
+    assert not response.status_code==404, "Error: Wrong username"
+    assert False, f"Error while fetching data:{response.status_code}"
+
+for event in response.json():
     firstString=""
     secondString = " ".join(event['created_at'].split("T"))[:-1]
     match event["type"]:
