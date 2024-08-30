@@ -1,7 +1,7 @@
 It's an application to read recent github User Activity
 <h2>Usage</h2>
-<hr/>
-To use app type python3 GithubUserActivity < username >
+To use app type <b>python3 GithubUserActivity < username ></b>
+
 
 If you like it give me star ;)
 
